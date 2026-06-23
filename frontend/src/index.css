@@ -1,0 +1,597 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   SENTINEL — Design System
+   Victorian London Intelligence Console × Dark AI Aesthetic
+   ============================================================ */
+
+:root {
+  /* Primary Palette */
+  --obsidian: #0a0a0c;
+  --graphite: #111116;
+  --graphite-mid: #16161e;
+  --graphite-light: #1e1e2a;
+  --surface: #1a1a24;
+  --surface-elevated: #21212e;
+  --border: rgba(255,255,255,0.07);
+  --border-glow: rgba(100,140,220,0.2);
+
+  /* Accent Palette */
+  --royal-blue: #3b5bdb;
+  --electric: #4dabf7;
+  --electric-dim: rgba(77,171,247,0.15);
+  --gold: #c9a84c;
+  --gold-dim: rgba(201,168,76,0.15);
+  --amber: #f59f00;
+  --crimson: #c92a2a;
+  --crimson-dim: rgba(201,42,42,0.15);
+  --emerald: #2f9e44;
+  --emerald-dim: rgba(47,158,68,0.12);
+
+  /* Typography */
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-editorial: 'EB Garamond', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Effects */
+  --glow-blue: 0 0 20px rgba(77,171,247,0.12), 0 0 40px rgba(59,91,219,0.06);
+  --glow-gold: 0 0 20px rgba(201,168,76,0.15);
+  --glow-crimson: 0 0 20px rgba(201,42,42,0.15);
+  --shadow-panel: 0 4px 24px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.04) inset;
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+/* ============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--obsidian);
+  color: rgba(255,255,255,0.88);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--obsidian); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(77,171,247,0.4); }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+.font-display { font-family: var(--font-display); }
+.font-editorial { font-family: var(--font-editorial); }
+.font-mono { font-family: var(--font-mono); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* ============================================================
+   PANEL / CARD BASE
+   ============================================================ */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-panel);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(77,171,247,0.2), transparent);
+  pointer-events: none;
+}
+
+.panel-elevated {
+  background: var(--surface-elevated);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 8px;
+  box-shadow: var(--shadow-panel), var(--glow-blue);
+}
+
+.glass-panel {
+  background: rgba(22,22,30,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glow);
+  border-radius: 10px;
+  box-shadow: var(--shadow-panel);
+}
+
+/* ============================================================
+   SENTINEL LOGO / BRAND
+   ============================================================ */
+
+.sentinel-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--electric);
+  text-shadow: 0 0 20px rgba(77,171,247,0.5);
+}
+
+.sentinel-crest {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================================
+   RISK LEVEL BADGES
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.badge-critical {
+  background: var(--crimson-dim);
+  border: 1px solid rgba(201,42,42,0.4);
+  color: #ff6b6b;
+  box-shadow: var(--glow-crimson);
+}
+
+.badge-high {
+  background: rgba(245,159,0,0.12);
+  border: 1px solid rgba(245,159,0,0.35);
+  color: var(--amber);
+}
+
+.badge-moderate {
+  background: rgba(77,171,247,0.1);
+  border: 1px solid rgba(77,171,247,0.3);
+  color: var(--electric);
+}
+
+.badge-low {
+  background: var(--emerald-dim);
+  border: 1px solid rgba(47,158,68,0.35);
+  color: #69db7c;
+}
+
+/* ============================================================
+   SCORE GAUGE
+   ============================================================ */
+
+.score-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   HIGHLIGHT COLORS (sentence viewer)
+   ============================================================ */
+
+.highlight-unsupported-claim {
+  background: rgba(201,42,42,0.18);
+  border-bottom: 2px solid rgba(201,42,42,0.6);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.highlight-unsupported-claim:hover {
+  background: rgba(201,42,42,0.28);
+}
+
+.highlight-propaganda-cue {
+  background: rgba(245,159,0,0.18);
+  border-bottom: 2px solid rgba(245,159,0,0.6);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.highlight-propaganda-cue:hover {
+  background: rgba(245,159,0,0.28);
+}
+
+.highlight-emotional-escalation {
+  background: rgba(201,168,76,0.12);
+  border-bottom: 2px solid rgba(201,168,76,0.5);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.highlight-emotional-escalation:hover {
+  background: rgba(201,168,76,0.22);
+}
+
+.highlight-manipulative-language {
+  background: rgba(139,92,246,0.15);
+  border-bottom: 2px solid rgba(139,92,246,0.5);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.highlight-manipulative-language:hover {
+  background: rgba(139,92,246,0.25);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--royal-blue), var(--electric));
+  color: white;
+  box-shadow: 0 4px 16px rgba(59,91,219,0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(59,91,219,0.5), var(--glow-blue);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(77,171,247,0.3);
+  color: white;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #8b6914, var(--gold));
+  color: #1a1400;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.25);
+}
+
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(201,168,76,0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #7a1010, var(--crimson));
+  color: white;
+  box-shadow: 0 4px 16px rgba(201,42,42,0.25);
+}
+
+/* ============================================================
+   DIVIDERS
+   ============================================================ */
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 16px 0;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+}
+
+/* ============================================================
+   LOADING SKELETONS
+   ============================================================ */
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   SECTION LABELS (Victorian scroll style)
+   ============================================================ */
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.7);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.92);
+}
+
+/* ============================================================
+   INTELLIGENCE CONSOLE ORNAMENTS
+   ============================================================ */
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(201,168,76,0.4);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2));
+}
+
+.ornament::after {
+  background: linear-gradient(90deg, rgba(201,168,76,0.2), transparent);
+}
+
+/* ============================================================
+   PROGRESS / ANALYSIS STAGES
+   ============================================================ */
+
+.stage-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s;
+}
+
+.stage-indicator.active {
+  color: var(--electric);
+}
+
+.stage-indicator.done {
+  color: #69db7c;
+}
+
+.stage-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.stage-indicator.active .stage-dot {
+  background: var(--electric);
+  box-shadow: 0 0 8px rgba(77,171,247,0.6);
+  animation: pulse-dot 1s infinite;
+}
+
+.stage-indicator.done .stage-dot {
+  background: #69db7c;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+
+.tab-bar {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
+}
+
+.tab-item {
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-family: var(--font-display);
+  color: rgba(255,255,255,0.4);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.tab-item:hover {
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.03);
+}
+
+.tab-item.active {
+  color: var(--electric);
+  border-bottom-color: var(--electric);
+}
+
+/* ============================================================
+   INTENSITY BAR
+   ============================================================ */
+
+.intensity-bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.intensity-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ============================================================
+   POPOVER
+   ============================================================ */
+
+.popover-content {
+  background: var(--graphite-mid);
+  border: 1px solid var(--border-glow);
+  border-radius: 8px;
+  padding: 12px 16px;
+  max-width: 300px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  z-index: 999;
+}
+
+/* ============================================================
+   INPUT AREA
+   ============================================================ */
+
+.analysis-input {
+  width: 100%;
+  background: rgba(10,10,12,0.8);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.88);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 20px;
+  resize: vertical;
+  min-height: 220px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.analysis-input:focus {
+  border-color: rgba(77,171,247,0.4);
+  box-shadow: 0 0 0 3px rgba(77,171,247,0.08), var(--glow-blue);
+}
+
+.analysis-input::placeholder {
+  color: rgba(255,255,255,0.2);
+  font-style: italic;
+}
+
+/* ============================================================
+   SELECT
+   ============================================================ */
+
+.premium-select {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  color: rgba(255,255,255,0.8);
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 8px 14px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  padding-right: 32px;
+}
+
+.premium-select:focus {
+  border-color: rgba(77,171,247,0.4);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: var(--glow-blue); }
+  50% { box-shadow: 0 0 30px rgba(77,171,247,0.2), 0 0 60px rgba(59,91,219,0.1); }
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease forwards; }
+.animate-fade-in-up { animation: fadeInUp 0.5s ease forwards; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .analyze-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+@media (max-width: 768px) {
+  .analyze-grid { grid-template-columns: 1fr !important; }
+  .tab-bar { overflow-x: auto; }
+}
